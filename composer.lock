@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "6c1949d02097c92df2640a7a15b96d56",
     "packages": [
         {
             "name": "brick/math",
@@ -1044,6 +1044,46 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "khodja/smsc",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FayzullaKhodja/smsc.git",
+                "reference": "309080c3c35a3baf2f22d55fbf8e24031ea4fedb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FayzullaKhodja/smsc/zipball/309080c3c35a3baf2f22d55fbf8e24031ea4fedb",
+                "reference": "309080c3c35a3baf2f22d55fbf8e24031ea4fedb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Khodja\\Smsc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fayzulla Khodja",
+                    "email": "fayzulla@khodja.uz"
+                }
+            ],
+            "description": "SMSC -  позволяет рассылать сообщения через ваши проекты и сервисы по протоколам HTTP/HTTPS, SMTP и SMPP.",
+            "support": {
+                "issues": "https://github.com/FayzullaKhodja/smsc/issues",
+                "source": "https://github.com/FayzullaKhodja/smsc/tree/master"
+            },
+            "time": "2017-06-03T05:47:51+00:00"
         },
         {
             "name": "laravel/framework",

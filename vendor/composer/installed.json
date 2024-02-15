@@ -1273,6 +1273,49 @@
             "install-path": "../hamcrest/hamcrest-php"
         },
         {
+            "name": "khodja/smsc",
+            "version": "v0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FayzullaKhodja/smsc.git",
+                "reference": "309080c3c35a3baf2f22d55fbf8e24031ea4fedb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FayzullaKhodja/smsc/zipball/309080c3c35a3baf2f22d55fbf8e24031ea4fedb",
+                "reference": "309080c3c35a3baf2f22d55fbf8e24031ea4fedb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2017-06-03T05:47:51+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Khodja\\Smsc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fayzulla Khodja",
+                    "email": "fayzulla@khodja.uz"
+                }
+            ],
+            "description": "SMSC -  позволяет рассылать сообщения через ваши проекты и сервисы по протоколам HTTP/HTTPS, SMTP и SMPP.",
+            "support": {
+                "issues": "https://github.com/FayzullaKhodja/smsc/issues",
+                "source": "https://github.com/FayzullaKhodja/smsc/tree/master"
+            },
+            "install-path": "../khodja/smsc"
+        },
+        {
             "name": "laravel/framework",
             "version": "v10.44.0",
             "version_normalized": "10.44.0.0",
