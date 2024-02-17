@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('sended_sms', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned()->nullable()->index('user_id');
-            $table->string('sms_name');
+            $table->string('sms_name')->nullable();
+            $table->string('completion')->nullable();
+            $table->text('serialized_users_ids')->nullable();
             $table->timestamps();
         });
     }

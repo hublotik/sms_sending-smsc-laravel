@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SMS extends Model
+class ScheduleEvents extends Model
 {
     /* define table name  */
 
-    protected $table = 'sended_sms';
+    protected $table = 'schedule_events';
 
     /**
      * The attributes that are mass assignable.
@@ -16,9 +16,10 @@ class SMS extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'send_time',
+        'sms_text',
+        'time_offset',
+        'event_name',
         'id',
-        'sms_name',
-        'serialized_users_ids',
-        'completion',
     ];
 }

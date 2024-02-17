@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ScheduleSmsController;
+use App\Http\Controllers\StatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,11 @@ Route::get('login_page', function () {
     return view('login_page')->name('login_page');
 });
 Route::middleware('auth.basic')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::any('/', [UserController::class, 'create'])->name('welcome');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+   
+    Route::any('/schedule', [ScheduleSmsController::class, 'schedule'])->name('schedule');
+    Route::post('/schedule/create', [ScheduleSmsController::class, 'schedule_create'])->name('schedule.create');
+
+    Route::get('/stat', [StatController::class, 'output'])->name('stat');
 });
