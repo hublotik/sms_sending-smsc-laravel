@@ -1,6 +1,7 @@
 <?php
 namespace App;
-
+use Illuminate\Support\Facades\Log;
+use Exception;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Models\ScheduleEvents;
 use App\Models\User;
