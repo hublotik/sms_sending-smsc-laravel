@@ -54,10 +54,11 @@ trait ScheduleTrait
         foreach ($sended_sms_events as $event) {
             $users_in_event = unserialize($event->serialized_users_ids);
             $schedule->call(function () use ($event, $users_in_event) {
+                $pos_res = 0;
                 foreach ($users_in_event as $user_id) {
                     $phone_numbers = User::where('id', $user_id)->select('phone_number')->get();
                     //iterate through numbers for checking status of each number
-                    $pos_res = 0;
+                    
                     foreach ($phone_numbers as $phone_number) {
                         try {
                             $curr_num_stat = Smsc::getStatus($event->id, $phone_number);
@@ -71,8 +72,8 @@ trait ScheduleTrait
                             Log::error('An error occurred: ' . $e->getMessage());
                         }
                     }
-                    $completion = ($pos_res / count($phone_numbers)) * 100;
                 }
+                $completion = ($pos_res / count($phone_numbers)) * 100;
 
                 SMS::where('id', $event->id)->update([
                     'completion' => $completion,
