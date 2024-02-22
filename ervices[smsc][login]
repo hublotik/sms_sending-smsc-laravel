@@ -1,0 +1,26 @@
+[90m= [39m[
+    "[34mmailgun[39m" => [
+      "[34mdomain[39m" => [36mnull[39m,
+      "[34msecret[39m" => [36mnull[39m,
+      "[34mendpoint[39m" => "[32mapi.mailgun.net[39m",
+      "[34mscheme[39m" => "[32mhttps[39m",
+    ],
+    "[34mpostmark[39m" => [
+      "[34mtoken[39m" => [36mnull[39m,
+    ],
+    "[34mses[39m" => [
+      "[34mkey[39m" => [36mnull[39m,
+      "[34msecret[39m" => [36mnull[39m,
+      "[34mregion[39m" => "[32mus-east-1[39m",
+    ],
+    "[34msmsc[39m" => [
+      "[34mlogin[39m" => "[32m***[39m",
+      "[34mpassword[39m" => "[32m***[39m",
+      "[34mpost[39m" => [35m1[39m,
+      "[34mhttps[39m" => [35m1[39m,
+      "[34mcharset[39m" => "[32mutf-8[39m",
+      "[34mdebug[39m" => [35m0[39m,
+      "[34msmtp_from[39m" => "[32mapi@smsc.ru[39m",
+    ],
+  ]
+

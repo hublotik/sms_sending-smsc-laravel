@@ -14,7 +14,14 @@
                             <div class="layer w-100 mB-10">
                                 <h6 class="lh-1">Создание рассылки</h6>
                                 <form method="POST" action="{{ route('schedule.create') }}">
-                                    @csrf
+                                    @csrf                                 
+                                    <label for="smsc_login">SmsC-логин:</label>
+                                    <input type="text" name="smsc_login" id="smsc_login">
+
+                                    <label for="smsc_password">SmsC-пароль:</label>
+                                    <input type="password" name="smsc_password" id="smsc_password">
+                                    <h6 class="lh-1">*Конфиг запишется в файл сервера</h6>
+
                                     <label for="event_name">Название рассылки:</label>
                                     <input type="text" name="event_name" id="event_name">
 
