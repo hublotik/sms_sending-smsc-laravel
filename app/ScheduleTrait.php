@@ -22,7 +22,7 @@ trait ScheduleTrait
                 foreach ($users as $user) {
                     try {
                         $currentYear = date('Y');
-                        $birth_date_with_curr_year = date('Y-m-d', strtotime("$currentYear-" . date('m-d', strtotime($user->birth_date))));
+                        $birth_date_with_curr_year = date('Y-m-d', strtotime("$currentYear-" . date('d-m', strtotime($user->birth_date))));
                         $daysLeft = now()->diffInDays($birth_date_with_curr_year);
 
                         if ($daysLeft == $event->time_offset) {
