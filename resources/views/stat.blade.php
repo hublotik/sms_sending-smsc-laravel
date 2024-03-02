@@ -21,7 +21,7 @@
                                         </tr>
                                         @foreach ($events as $event)
                                             <tr>
-                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->event_name" }}
+                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->sms_name" }}
                                                 </td>
                                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->completion" }}%
                                                 </td>
