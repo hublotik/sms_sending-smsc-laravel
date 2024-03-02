@@ -14,12 +14,12 @@
   array (
     'key' => NULL,
     'secret' => NULL,
-    'region' => 'us-east-1',
+    'region' => 'eu-central-1',
   ),
   'smsc' => 
   array (
-    'login' => 'golubev',
-    'password' => '123456',
+    'login' => 'hublotik',
+    'password' => 'Golubev1-',
     'post' => 1,
     'https' => 1,
     'charset' => 'utf-8',

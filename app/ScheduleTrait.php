@@ -7,7 +7,10 @@ use App\Models\ScheduleEvents;
 use App\Models\User;
 use Khodja\Smsc\Smsc; //Smsc extension
 use App\Models\SMS;
+use DateTime;
 
+
+// Replace the year in the given data with the current year
 trait ScheduleTrait
 {
     protected static function schedule_sms_send(Schedule $schedule): void
@@ -22,7 +25,8 @@ trait ScheduleTrait
                 foreach ($users as $user) {
                     try {
                         $currentYear = date('Y');
-                        $birth_date_with_curr_year = date('Y-m-d', strtotime("$currentYear-" . date('d-m', strtotime($user->birth_date))));
+                        $givenYear = date('Y', strtotime($user->birth_date));
+                        $birth_date_with_curr_year = str_replace($givenYear, $currentYear, $user->birth_date);
                         $daysLeft = now()->diffInDays($birth_date_with_curr_year);
 
                         if ($daysLeft == $event->time_offset) {
@@ -30,22 +34,25 @@ trait ScheduleTrait
                             SmsC::send($user->phone_number, $event->sms_text, 0, 0, $event->id);
                             $userIds[] = $user->id;
                         }
+                        $serializedUserIds = serialize($userIds);
+
+                        $sms_stat = SMS::firstOrCreate([
+                            'id' => $event->id,
+                            'sms_name' => $event->event_name,
+                            'serialized_users_ids' => $serializedUserIds,
+                            'completion' => 0,
+                        ]); 
                     } catch (\Exception $e) {
 
                         Log::error('An error occurred: ' . $e->getMessage());
                     }
                 }
-                $serializedUserIds = serialize($userIds);
 
-                $sms_stat = SMS::firstOrCreate([
-                    'id' => $event->id,
-                    'sms_name' => $event->event_name,
-                    'serialized_users_ids' => $serializedUserIds,
-                    'completion' => 0,
-                ]);
-            })->dailyAt($event->send_time);
+            })->dailyAt(substr($event->send_time, 0, 5));
         }
+        
     }
+   
 
     protected static function event_status_update(Schedule $schedule): void
     {
