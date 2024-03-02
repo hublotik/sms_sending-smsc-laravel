@@ -84,6 +84,8 @@ class Kernel extends ConsoleKernel
 
                 SMS::where('id', $event->id)->update([
                     'completion' => $completion,
+                    'success'=> $pos_res,
+                    'total' => count($users_in_event),
                 ]);
             })->everyTenMinutes(); // for example every 10 mins
         }

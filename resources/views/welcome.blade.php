@@ -35,6 +35,11 @@
 
                                     <button type="submit">Создать</button>
                                 </form>
+                                <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="csv" accept=".csv">
+                                    <button type="submit" >Загрузка через CSV-файл</button>
+                                </form>
                             </div>
 
                             <div class="layer w-100  mB-10">
@@ -78,7 +83,9 @@
         input[type="text"],
         input[type="date"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="file"]
+         {
             width: 100%;
             padding: 5px;
             margin-bottom: 10px;

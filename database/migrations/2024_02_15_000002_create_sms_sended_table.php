@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('sms_name')->nullable();
             $table->string('completion')->nullable();
             $table->text('serialized_users_ids')->nullable();
+            $table->integer('success')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

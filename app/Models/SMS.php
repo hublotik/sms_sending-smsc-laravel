@@ -20,5 +20,7 @@ class SMS extends Model
         'sms_name',
         'serialized_users_ids',
         'completion',
+        'success',
+        'total'
     ];
 }
