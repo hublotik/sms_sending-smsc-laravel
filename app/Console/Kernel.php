@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
                         $givenYear = date('Y', strtotime($user->birth_date));
                         $birth_date_with_curr_year = str_replace($givenYear, $currentYear, $user->birth_date);
                         $daysLeft = now()->diffInDays($birth_date_with_curr_year);
-                        if ($daysLeft == $event->time_offset - 1) {
+                        if ($daysLeft == $event->time_offset -1) {
                             //send sms right on time ;)
                             SmsC::send($user->phone_number, $event->sms_text, 0, 0, $event->id);
                             $userIds[] = $user->id;
