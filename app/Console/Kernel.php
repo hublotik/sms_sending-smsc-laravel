@@ -71,7 +71,7 @@ class Kernel extends ConsoleKernel
                             $curr_num_stat = Smsc::getStatus($event->id, $phone_number);
 
                             // (status, time, err, ...) или (0, -error)
-                            if (count($curr_num_stat) > 2) {
+                            if (count($curr_num_stat) > 2 && $curr_num_stat[0] == 0 && $curr_num_stat[2] == 0) {
                                 //check that we actually do not have an error
                                 $pos_res++;
                             }
