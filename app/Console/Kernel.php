@@ -60,34 +60,36 @@ class Kernel extends ConsoleKernel
         $sended_sms_events = SMS::all();
         foreach ($sended_sms_events as $event) {
             $users_in_event = unserialize($event->serialized_users_ids);
-            $schedule->call(function () use ($event, $users_in_event) {
-                $pos_res = 0;
-                foreach ($users_in_event as $user_id) {
-                    $phone_numbers = User::where('id', $user_id)->select('phone_number')->get();
-                    //iterate through numbers for checking status of each number
+            if ($event->completion != 100) {
+                $schedule->call(function () use ($event, $users_in_event) {
+                    $pos_res = 0;
+                    foreach ($users_in_event as $user_id) {
+                        $phone_numbers = User::where('id', $user_id)->select('phone_number')->get();
+                        //iterate through numbers for checking status of each number
 
-                    foreach ($phone_numbers as $phone_number) {
-                        try {
-                            $curr_num_stat = Smsc::getStatus($event->id, $phone_number);
+                        foreach ($phone_numbers as $phone_number) {
+                            try {
+                                $curr_num_stat = Smsc::getStatus($event->id, $phone_number);
 
-                            // (status, time, err, ...) или (0, -error)
-                            if (count($curr_num_stat) > 2 && $curr_num_stat[0] == 0 && $curr_num_stat[2] == 0) {
-                                //check that we actually do not have an error
-                                $pos_res++;
+                                // (status, time, err, ...) или (0, -error)
+                                if (count($curr_num_stat) > 2 && $curr_num_stat[0] == 0 && $curr_num_stat[2] == 0) {
+                                    //check that we actually do not have an error
+                                    $pos_res++;
+                                }
+                            } catch (Exception $e) {
+                                Log::error('An error occurred: ' . $e->getMessage());
                             }
-                        } catch (Exception $e) {
-                            Log::error('An error occurred: ' . $e->getMessage());
                         }
                     }
-                }
-                $completion = ($pos_res / count($phone_numbers)) * 100;
+                    $completion = ($pos_res / count($phone_numbers)) * 100;
 
-                SMS::where('id', $event->id)->update([
-                    'completion' => $completion,
-                    'success'=> $pos_res,
-                    'total' => count($users_in_event),
-                ]);
-            })->everyMinute(); // for example every 10 mins
+                    SMS::where('id', $event->id)->update([
+                        'completion' => $completion,
+                        'success' => $pos_res,
+                        'total' => count($users_in_event),
+                    ]);
+                })->everyMinute(); // for example every 10 mins
+            }
         }
     }
 
