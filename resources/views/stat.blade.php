@@ -27,9 +27,9 @@
                                                 </td>
                                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->completion" }}%
                                                 </td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->total" }}%
+                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->total" }}
                                                 </td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->success" }}%
+                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->success" }}
                                                 </td>
                                             </tr>
                                         @endforeach
