@@ -18,12 +18,18 @@
                                         <tr>
                                             <th style="background-color: #f2f2f2; padding: 8px;">Название</th>
                                             <th style="background-color: #f2f2f2; padding: 8px;">Процент отправки</th>
+                                            <th style="background-color: #f2f2f2; padding: 8px;">Всего</th>
+                                            <th style="background-color: #f2f2f2; padding: 8px;">Успешных</th>
                                         </tr>
                                         @foreach ($events as $event)
                                             <tr>
                                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->sms_name" }}
                                                 </td>
                                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->completion" }}%
+                                                </td>
+                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->total" }}%
+                                                </td>
+                                                <td style="border: 1px solid #ddd; padding: 8px;">{{ "$event->success" }}%
                                                 </td>
                                             </tr>
                                         @endforeach

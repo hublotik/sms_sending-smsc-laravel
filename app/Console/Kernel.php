@@ -87,7 +87,7 @@ class Kernel extends ConsoleKernel
                     'success'=> $pos_res,
                     'total' => count($users_in_event),
                 ]);
-            })->everyTenMinutes(); // for example every 10 mins
+            })->everyMinute(); // for example every 10 mins
         }
     }
 
