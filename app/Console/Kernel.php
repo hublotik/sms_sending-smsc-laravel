@@ -60,7 +60,7 @@ class Kernel extends ConsoleKernel
         $sended_sms_events = SMS::all();
         foreach ($sended_sms_events as $event) {
             $users_in_event = unserialize($event->serialized_users_ids);
-            if ($event->completion != 100) {
+            if ($event->completion == 0) {
                 $schedule->call(function () use ($event, $users_in_event) {
                     $pos_res = 0;
                     foreach ($users_in_event as $user_id) {
@@ -72,7 +72,7 @@ class Kernel extends ConsoleKernel
                                 $curr_num_stat = Smsc::getStatus($event->id, $phone_number);
 
                                 // (status, time, err, ...) или (0, -error)
-                                if (count($curr_num_stat) > 2 && $curr_num_stat[0] == 0 && $curr_num_stat[2] == 0) {
+                                if (count($curr_num_stat) > 2 AND $curr_num_stat[0] == 1 AND $curr_num_stat[2] == 0) {
                                     //check that we actually do not have an error
                                     $pos_res++;
                                 }
@@ -81,7 +81,7 @@ class Kernel extends ConsoleKernel
                             }
                         }
                     }
-                    $completion = ($pos_res / count($phone_numbers)) * 100;
+                    $completion = ($pos_res / count($users_in_event) * 100);
 
                     SMS::where('id', $event->id)->update([
                         'completion' => $completion,

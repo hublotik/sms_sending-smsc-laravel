@@ -18,8 +18,8 @@
   ),
   'smsc' => 
   array (
-    'login' => 'hublotik',
-    'password' => 'Golubev1-',
+    'login' => 'tech@imtera.ru',
+    'password' => 'kJv-N2N-HNm-fmn',
     'post' => 1,
     'https' => 1,
     'charset' => 'utf-8',

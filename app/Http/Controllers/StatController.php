@@ -9,7 +9,7 @@ class StatController extends Controller
 {
     public function output()
     {
-        $events = SMS::select('completion', 'sms_name')->get();
+        $events = SMS::select('completion', 'sms_name', 'success', 'total')->get();
         return view('stat', compact(['events']));
     }
 
